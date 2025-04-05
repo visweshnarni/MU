@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SugarTalk Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="login-container">
+            <h1>SugarTalk Chat</h1>
+            <div class="form-group">
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <button id="login-btn">Login</button>
+            </div>
+            <div id="login-error" class="error"></div>
+        </div>
+
+        <!-- Chat Interface -->
+        <div id="chat-container" style="display: none;">
+            <!-- Sidebar with user list -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="user-info">
+                        <h3>ME</h3>
+                    </div>
+                    <div class="header-icons">
+                        <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button id="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-users" placeholder="Search or start new chat">
+                    </div>
+                </div>
+                <div id="users-list">
+                    <!-- User list will be populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Chat area -->
+            <div class="chat-area">
+                <div class="chat-header">
+                    <div id="current-chat-user">
+                        <!-- Current chat user info will be set dynamically -->
+                        <span>Select a user to start chatting</span>
+                    </div>
+                </div>
+                <div id="chat-box">
+                    <!-- Messages will be populated dynamically -->
+                    <div class="no-chat-selected">
+                        <p>Select a user to start chatting</p>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <div class="suggestion-box" id="suggestion-box" style="display: none;">
+                        <div class="suggestion-content" id="suggestion-content"></div>
+                        <div class="suggestion-dismiss">
+                            <button id="dismiss-suggestion"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <input type="text" id="message-input" placeholder="Type a message..." disabled>
+                    <div class="button-group">
+                        <button id="gemini-toggle" class="toggle-btn" title="Enable/Disable Gemini AI" disabled>
+                            <i class="fas fa-robot"></i>
+                        </button>
+                        <button id="sugartalk-btn" class="toggle-btn" title="SugarTalk - Sweeten your message" disabled>
+                            <i class="fas fa-candy-cane"></i>
+                        </button>
+                        <button id="send-btn" disabled><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SugarTalk Modal -->
+        <div id="sugartalk-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>🍬 SugarTalk: Sweeten Your Message</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="original-message-container">
+                        <h3>Original Message:</h3>
+                        <div id="original-message" class="message-preview"></div>
+                    </div>
+                    
+                    <div id="health-suggestion-container" class="health-suggestion-container" style="display: none;">
+                        <div class="health-suggestion-icon">⚠️</div>
+                        <div id="health-suggestion" class="health-suggestion"></div>
+                    </div>
+                    
+                    <div class="tone-selector">
+                        <h3>Choose a Tone Style:</h3>
+                        <div class="tone-options">
+                            <div class="tone-option" data-tone="smooth_like_honey">
+                                <div class="tone-icon">🧁</div>
+                                <div class="tone-details">
+                                    <h4>Smooth Like Honey</h4>
+                                    <p class="tagline">Glides like charm.</p>
+                                    <p class="effect">Soft, calming, polite. Like a therapist in DMs.</p>
+                                </div>
+                            </div>
+
+                            <div class="tone-option" data-tone="sweet_and_subtle">
+                                <div class="tone-icon">🍂</div>
+                                <div class="tone-details">
+                                    <h4>Sweet & Subtle</h4>
+                                    <p class="tagline">You get your point across… without the sting.</p>
+                                    <p class="effect">Passive-aggressive but sugar-coated. Velvet sarcasm.</p>
+                                </div>
+                            </div>
+
+                            <div class="tone-option" data-tone="soft_serve">
+                                <div class="tone-icon">🍦</div>
+                                <div class="tone-details">
+                                    <h4>Soft-Serve</h4>
+                                    <p class="tagline">Sprinkle some kindness on it.</p>
+                                    <p class="effect">Complaints turned into compliments. Wholesome and kind.</p>
+                                </div>
+                            </div>
+
+                            <div class="tone-option" data-tone="berry_nice">
+                                <div class="tone-icon">🍓</div>
+                                <div class="tone-details">
+                                    <h4>Berry Nice</h4>
+                                    <p class="tagline">Extra friendly, zero drama.</p>
+                                    <p class="effect">Cheerful, casual, emoji-filled and very friendly.</p>
+                                </div>
+                            </div>
+
+                            <div class="tone-option" data-tone="spicy_sugar">
+                                <div class="tone-icon">🌶️</div>
+                                <div class="tone-details">
+                                    <h4>Spicy Sugar</h4>
+                                    <p class="tagline">Respectfully savage.</p>
+                                    <p class="effect">Clever, sassy, but never toxic. For confident roasting.</p>
+                                </div>
+                            </div>
+
+                            <div class="tone-option" data-tone="sugarcoat_it">
+                                <div class="tone-icon">🍬</div>
+                                <div class="tone-details">
+                                    <h4>Sugarcoat It</h4>
+                                    <p class="tagline">Say what you mean—just not meanly.</p>
+                                    <p class="effect">Gentle honesty. Great for feedback that won't hurt feelings.</p>
+                                </div>
+                            </div>
+
+                            <div class="tone-option" data-tone="bittersweet_truth">
+                                <div class="tone-icon">💎</div>
+                                <div class="tone-details">
+                                    <h4>Bittersweet Truth</h4>
+                                    <p class="tagline">Real talk, respectfully delivered.</p>
+                                    <p class="effect">Balanced tone. Honest but emotionally cooled down.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="transformed-message-container" style="display: none;">
+                        <h3>Sweetened Message:</h3>
+                        <div id="transformed-message" class="message-preview"></div>
+                    </div>
+                    
+                    <div class="loading-spinner" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Sweetening your message...</p>
+                    </div>
+                    
+                    <div class="modal-actions tone-selection-actions">
+                        <button id="transform-btn" disabled>Sweeten Message</button>
+                        <button id="cancel-transform-btn">Cancel</button>
+                    </div>
+                    
+                    <div class="modal-actions transformed-actions" style="display: none;">
+                        <button id="send-transformed-btn">Send Sweetened Message</button>
+                        <button id="try-different-tone-btn">Try Different Tone</button>
+                        <button id="send-original-btn">Send Original Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
