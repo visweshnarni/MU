@@ -1,4 +1,4 @@
-# SugarTalk Chat Application
+# SugarTalk Application
 
 A WhatsApp-like chat application that allows users to communicate individually over a local network. Only authenticated users with credentials stored in a JSON file can access the chat.
 

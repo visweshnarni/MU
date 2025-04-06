@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #f0f2f5;
+    background-color: #FFF0F5; /* Light pink background */
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -33,11 +33,15 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
+    background-color: #FFF0F5; /* Light pink background */
+    position: relative;
+    overflow: hidden; /* Keep the sugar elements inside the container */
 }
 
 #login-container h1 {
     margin-bottom: 2rem;
-    color: #128C7E;
+    color: #FF69B4; /* Hot pink for title */
+    font-size: 2.5rem;
 }
 
 .form-group {
@@ -49,24 +53,25 @@ body {
 .form-group input {
     width: 100%;
     padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 1px solid #FFC0CB; /* Pink border */
+    border-radius: 15px; /* Rounded corners */
     font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 button {
     padding: 0.8rem 1.5rem;
-    background-color: #128C7E;
+    background-color: #FF69B4; /* Hot pink for buttons */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px; /* More rounded for candy-like appearance */
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #0C6B5F;
+    background-color: #FF1493; /* Deeper pink on hover */
 }
 
 .error {
@@ -87,19 +92,23 @@ button:hover {
     width: 30%;
     min-width: 300px;
     height: 100%;
-    border-right: 1px solid #e1e1e1;
+    border-right: 1px solid #FFC0CB; /* Pink border */
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 3;
 }
 
 .sidebar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 16px;
-    background-color: #F0F2F5;
+    padding: 12px 20px;
+    background-color: #FFC0CB; /* Pink background */
     height: 60px;
+    border-bottom: 1px solid #FFB6C1;
 }
 
 .user-info {
@@ -108,8 +117,9 @@ button:hover {
 }
 
 .user-info h3 {
-    color: #333;
-    font-size: 16px;
+    color: #8E44AD; /* Purple text */
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .header-icons {
@@ -119,34 +129,48 @@ button:hover {
 .header-icons button {
     background: none;
     border: none;
-    color: #54656f;
+    color: #8E44AD; /* Purple icons */
     font-size: 18px;
     margin-left: 15px;
     cursor: pointer;
-    padding: 5px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .header-icons button:hover {
-    background-color: #ebebeb;
-    border-radius: 50%;
+    background-color: #FFD1DC; /* Light pink background on hover */
+    transform: translateY(-2px);
 }
 
 .search-container {
-    padding: 8px 15px;
+    padding: 12px 15px;
     background-color: #ffffff;
+    border-bottom: 1px solid #FFF0F5;
 }
 
 .search-box {
     display: flex;
     align-items: center;
-    background-color: #F0F2F5;
+    background-color: #FFF0F5; /* Light pink background */
     border-radius: 20px;
     padding: 0 15px;
-    height: 35px;
+    height: 40px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.search-box:focus-within {
+    box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.2);
 }
 
 .search-box i {
-    color: #54656f;
+    color: #8E44AD; /* Purple icon */
     margin-right: 10px;
 }
 
@@ -156,6 +180,7 @@ button:hover {
     outline: none;
     flex: 1;
     font-size: 14px;
+    color: #333;
 }
 
 #users-list {
@@ -166,25 +191,32 @@ button:hover {
 .user-item {
     display: flex;
     align-items: center;
-    padding: 12px 15px;
-    border-bottom: 1px solid #f0f2f5;
+    padding: 15px 20px;
+    border-bottom: 1px solid #FFF0F5; /* Light pink border */
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
 }
 
 .user-item:hover, .user-item.active {
-    background-color: #f0f2f5;
+    background-color: #FFF0F5; /* Light pink background */
+    transform: translateX(5px);
 }
 
 .user-avatar {
-    width: 49px;
-    height: 49px;
-    background-color: #DFE5E7;
+    width: 50px;
+    height: 50px;
+    background-color: #FF69B4; /* Hot pink avatar background */
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.user-item:hover .user-avatar, .user-item.active .user-avatar {
+    transform: scale(1.05);
 }
 
 .user-avatar span {
@@ -199,20 +231,27 @@ button:hover {
 
 .user-name {
     font-weight: bold;
-    color: #000000;
+    color: #8E44AD; /* Purple text */
     font-size: 16px;
-    margin-bottom: 3px;
+    margin-bottom: 4px;
+    transition: color 0.3s;
+}
+
+.user-item:hover .user-name {
+    color: #FF1493; /* Deeper pink on hover */
 }
 
 .user-status {
     font-size: 13px;
-    color: #667781;
+    color: #FF69B4; /* Hot pink status text */
+    display: flex;
+    align-items: center;
 }
 
 .online-status {
-    width: 10px;
-    height: 10px;
-    background-color: #25D366;
+    width: 8px;
+    height: 8px;
+    background-color: #FF69B4; /* Hot pink online status indicator */
     border-radius: 50%;
     margin-right: 5px;
     display: inline-block;
@@ -223,29 +262,57 @@ button:hover {
     display: inline-block;
     width: 8px;
     height: 8px;
-    background-color: #25D366;
+    background-color: #FF69B4; /* Hot pink unread indicator */
     border-radius: 50%;
-    margin-left: 5px;
+    margin-left: 8px;
+    animation: pulse 2s infinite;
 }
 
-/* Chat Area */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Chat Area with enhanced styling */
 .chat-area {
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: #e5ded8;
+    background-color: #FFF5FA; /* Lighter pink background */
     background-image: url('https://web.whatsapp.com/img/bg-chat-tile-light_a4be8c74.png');
     background-repeat: repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add subtle candy pattern overlay to chat area */
+.chat-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.1) 0%, transparent 20%),
+                      radial-gradient(circle at 30% 70%, rgba(255, 105, 180, 0.1) 0%, transparent 25%),
+                      radial-gradient(circle at 60% 40%, rgba(231, 205, 236, 0.12) 0%, transparent 20%),
+                      radial-gradient(circle at 90% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 15%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .chat-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 16px;
-    background-color: #F0F2F5;
+    padding: 12px 20px;
+    background-color: #FFC0CB; /* Pink background */
     height: 60px;
-    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid #FFB6C1; /* Pink border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 2;
 }
 
 #current-chat-user {
@@ -255,8 +322,9 @@ button:hover {
 
 #current-chat-user span {
     font-weight: bold;
-    color: #333;
+    color: #8E44AD; /* Purple text to match theme */
     margin-left: 10px;
+    font-size: 1.1rem;
 }
 
 #chat-box {
@@ -265,60 +333,60 @@ button:hover {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 1;
 }
 
-.no-chat-selected {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #667781;
-    font-size: 16px;
-}
-
-/* Message styles */
+/* Improved message bubbles */
 .message {
-    margin: 10px 0;
+    margin: 12px 15px;
     display: flex;
     flex-direction: column;
-    max-width: 70%;
-    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .own-message {
-    align-self: flex-end;
-    margin-left: auto;
+    align-items: flex-end;
 }
 
 .other-message {
-    align-self: flex-start;
-    margin-right: auto;
+    align-items: flex-start;
 }
 
 .message-content {
-    padding: 10px 15px;
+    max-width: 75%;
+    padding: 10px 14px;
     border-radius: 18px;
     position: relative;
-    word-break: break-word;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.message-content:hover {
+    transform: translateY(-2px);
 }
 
 .own-message .message-content {
-    background-color: #dcf8c6; /* Light green for sender */
-    color: #000000; /* Black text */
-    border-bottom-right-radius: 4px;
+    background-color: #FFB6C1; /* Pink message bubbles */
+    color: #333;
+    border-bottom-right-radius: 5px;
 }
 
 .other-message .message-content {
-    background-color: #ffffff; /* White for receiver */
-    color: #000000; /* Black text */
-    border-bottom-left-radius: 4px;
+    background-color: #E6E6FA; /* Lavender message bubbles */
+    color: #333;
+    border-bottom-left-radius: 5px;
 }
 
 .message-text {
     margin-bottom: 4px;
-    font-size: 0.9rem;
-    line-height: 1.4;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .message-time {
@@ -329,158 +397,240 @@ button:hover {
 }
 
 .message-sender {
-    font-size: 0.75rem;
-    margin-bottom: 2px;
-    color: #128C7E; /* Keep sender name in theme color */
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+    color: #FF69B4; /* Hot pink for sender name */
     font-weight: 500;
 }
 
-.no-messages {
-    text-align: center;
-    color: var(--text-color-secondary);
-    margin: 20px 0;
-    font-style: italic;
-}
-
-/* Chat box styling */
-#chat-box {
+.no-chat-selected {
     flex: 1;
-    overflow-y: auto;
-    padding: 20px;
     display: flex;
     flex-direction: column;
-    background-color: var(--bg-color);
+    justify-content: center;
+    align-items: center;
+    color: #8E44AD; /* Purple text */
+    font-size: 16px;
+    background-image: radial-gradient(circle, #FFF0F5 0%, #FFF5FA 70%);
+    height: 100%;
 }
 
-/* Dark theme adjustments for messages */
-.dark-theme .other-message .message-content {
-    background-color: #ffffff;
-    color: #000000;
+.no-chat-selected::before {
+    content: '🍭';
+    font-size: 48px;
+    margin-bottom: 20px;
 }
 
-.dark-theme .own-message .message-content {
-    background-color: #dcf8c6;
-    color: #000000;
+.no-chat-selected p {
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 80%;
+    line-height: 1.6;
 }
 
-/* Fix for Firefox to make sure the chat flexbox works properly */
-@supports (-moz-appearance:none) {
-    #chat-box {
-        min-height: 0;
-    }
-}
-
+/* Enhanced input area */
 .input-container {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF0F5; /* Light pink background */
+    border-top: 1px solid #FFC0CB; /* Pink border */
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.message-input-wrapper {
     display: flex;
     align-items: center;
-    padding: 10px 16px;
-    background-color: #F0F2F5;
-    position: relative;
-}
-
-.button-group {
-    display: flex;
+    width: 100%;
 }
 
 #message-input {
     flex: 1;
-    padding: 9px 12px;
-    border: none;
-    border-radius: 21px;
-    background-color: #ffffff;
-    font-size: 15px;
+    padding: 12px 18px;
+    border: 1px solid #FFC0CB; /* Pink border */
+    border-radius: 24px;
+    margin-right: 10px;
     outline: none;
-    margin-right: 0;
-}
-
-.suggestion-box {
-    position: absolute;
-    bottom: 100%;
-    left: 16px;
-    right: 16px;
-    background-color: #FFF8E1;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 12px;
-    margin-bottom: 8px;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-left: 4px solid #FFA000;
-}
-
-.suggestion-content {
-    flex: 1;
     font-size: 14px;
-    color: #5F4B32;
-    line-height: 1.4;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
 }
 
-.suggestion-dismiss button {
+#message-input:focus {
+    border-color: #FF69B4; /* Hot pink border on focus */
+    box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.2);
+    transform: translateY(-1px);
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+}
+
+/* Improved button styling */
+.toggle-btn {
     background: none;
     border: none;
-    color: #FFA000;
-    padding: 0;
-    margin-left: 10px;
+    padding: 10px;
+    margin-right: 5px;
     cursor: pointer;
-    font-size: 14px;
-}
-
-.toggle-btn {
-    background-color: #E0E0E0;
-    color: #757575;
-    border: none;
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
+    color: #8E44AD; /* Purple icons */
+    transition: all 0.3s ease;
+    position: relative;
+    width: 38px;
+    height: 38px;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    padding: 0;
-    margin-right: 8px;
-    transition: background-color 0.3s, color 0.3s;
+}
+
+.toggle-btn i {
+    font-size: 1.1rem;
+}
+
+.toggle-btn:hover {
+    background-color: #FFE6F2; /* Very light pink hover */
+    transform: translateY(-2px);
 }
 
 .toggle-btn.active {
-    background-color: #0D7963;
-    color: white;
+    background-color: #FFD1DC; /* Light pink background when active */
+    color: #FF1493; /* Deeper pink icon when active */
 }
 
 .toggle-btn:disabled {
-    background-color: #cccccc;
+    opacity: 0.5;
     cursor: not-allowed;
+    transform: none;
+}
+
+/* Tooltip for buttons */
+.toggle-btn::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    pointer-events: none;
+}
+
+.toggle-btn:hover::after {
+    visibility: visible;
+    opacity: 1;
 }
 
 #send-btn {
-    background-color: #128C7E;
-    color: white;
+    background-color: #FF69B4; /* Hot pink send button */
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    padding: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#send-btn i {
+    font-size: 1.1rem;
+}
+
+#send-btn:hover {
+    background-color: #FF1493; /* Deeper pink on hover */
+    transform: translateY(-2px) rotate(15deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 #send-btn:disabled {
-    background-color: #cccccc;
+    opacity: 0.5;
     cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
-.status {
-    text-align: center;
-    color: #667781;
-    font-size: 12px;
-    margin: 10px 0;
-    background-color: rgba(225, 245, 254, 0.92);
-    padding: 5px 10px;
-    border-radius: 5px;
-    align-self: center;
+/* Enhanced suggestion box */
+.suggestion-box {
+    background-color: #FFF0F5; /* Light pink background */
+    border: 1px solid #FFC0CB; /* Pink border */
+    border-radius: 16px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.suggestion-content {
+    color: #8E44AD; /* Purple text */
+    font-size: 14px;
+    line-height: 1.5;
+    margin-right: 30px;
+}
+
+.suggestion-dismiss button {
+    color: #FF69B4; /* Hot pink icon */
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.suggestion-dismiss button:hover {
+    background-color: #FFE6F2; /* Very light pink hover */
+}
+
+/* Health suggestion container with enhanced styling */
+.health-suggestion-container {
+    background-color: #FFF0F5; /* Light pink background */
+    border: 1px solid #FFC0CB; /* Pink border */
+    border-radius: 16px;
+    padding: 15px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease;
+}
+
+.health-suggestion-icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.health-suggestion {
+    color: #8E44AD; /* Purple text */
+    flex: 1;
+    margin-left: 10px;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 @media (max-width: 768px) {
@@ -519,88 +669,189 @@ button:hover {
 
 /* Dark Mode Theme */
 body.dark-theme {
-    background-color: #111b21;
+    background-color: #302C40; /* Dark purple for dark theme */
 }
 
 body.dark-theme .container {
-    background-color: #111b21;
+    background-color: #302C40; /* Dark purple background */
 }
 
 body.dark-theme .sidebar {
-    background-color: #111b21;
-    border-right-color: #222e35;
+    background-color: #362f45; /* Slightly lighter dark purple */
+    border-right-color: #483d5e; /* Medium purple */
 }
 
 body.dark-theme .sidebar-header,
 body.dark-theme .search-box,
+body.dark-theme .user-item:hover,
+body.dark-theme .user-item.active,
 body.dark-theme .input-container {
-    background-color: #202c33;
+    background-color: #483d5e; /* Medium purple */
 }
 
 body.dark-theme .chat-header {
-    background-color: #202c33;
-    border-bottom-color: #222e35;
+    background-color: #483d5e; /* Medium purple */
+    border-bottom-color: #5D4777; /* Lighter purple */
 }
 
 body.dark-theme #current-chat-user span {
-    color: #e9edef;
+    color: #FFC0CB; /* Pink text */
 }
 
 body.dark-theme .user-info h3 {
-    color: #e9edef;
+    color: #FFC0CB; /* Pink text */
 }
 
 body.dark-theme .header-icons button {
-    color: #aebac1;
+    color: #FFC0CB; /* Pink icons */
 }
 
 body.dark-theme .search-box input,
-body.dark-theme .search-box i {
-    color: #d1d7db;
+body.dark-theme #message-input {
+    background-color: #362f45; /* Slightly lighter dark purple */
+    color: #FFC0CB; /* Pink text */
 }
 
 body.dark-theme .chat-area {
-    background-color: #0b141a;
-    background-image: url('https://web.whatsapp.com/img/bg-chat-tile-dark_a4be8c74.png');
+    background-color: #251F35; /* Darker purple for chat area */
+    background-image: none;
 }
 
 body.dark-theme .user-item:hover,
 body.dark-theme .user-item.active {
-    background-color: #2a3942;
+    background-color: #483d5e; /* Medium purple */
 }
 
 body.dark-theme .user-name {
-    color: #e9edef;
+    color: #FFC0CB; /* Pink text */
 }
 
 body.dark-theme .user-status {
-    color: #8696a0;
+    color: #DDA0DD; /* Plum color */
 }
 
 body.dark-theme .message.received {
-    background-color: #202c33;
+    color: #FFC0CB; /* Pink text */
 }
 
 body.dark-theme .message.sent {
-    background-color: #025c4b;
+    color: #DDA0DD; /* Plum color */
 }
 
-body.dark-theme .message .text {
-    color: #e9edef;
+body.dark-theme .own-message .message-content {
+    background-color: #614B85; /* Deep purple for own messages */
+    color: #FFC0CB; /* Pink text */
 }
 
-body.dark-theme .message .timestamp {
-    color: #8696a0;
+body.dark-theme .other-message .message-content {
+    background-color: #483d5e; /* Medium purple for other messages */
+    color: #FFC0CB; /* Pink text */
 }
 
-body.dark-theme #message-input {
-    background-color: #2a3942;
-    color: #d1d7db;
+body.dark-theme .suggestion-box {
+    background-color: #483d5e; /* Medium purple */
+    border: 1px solid #5D4777; /* Lighter purple */
 }
 
-body.dark-theme .no-chat-selected,
-body.dark-theme .no-messages {
-    color: #8696a0;
+body.dark-theme .suggestion-content {
+    color: #FFC0CB; /* Pink text */
+}
+
+body.dark-theme .suggestion-dismiss button {
+    color: #FFC0CB; /* Pink icon */
+}
+
+body.dark-theme .toggle-btn {
+    color: #FFC0CB; /* Pink icons */
+}
+
+body.dark-theme .toggle-btn.active {
+    background-color: #614B85; /* Deep purple */
+    color: #FF69B4; /* Hot pink */
+}
+
+body.dark-theme #send-btn {
+    background-color: #FF69B4; /* Hot pink send button */
+}
+
+body.dark-theme #send-btn:hover {
+    background-color: #FF1493; /* Deeper pink on hover */
+}
+
+body.dark-theme .modal-content {
+    background-color: #362f45; /* Slightly lighter dark purple */
+}
+
+body.dark-theme .modal-header {
+    background-color: #483d5e; /* Medium purple */
+    color: #FFC0CB; /* Pink text */
+}
+
+body.dark-theme .modal-header h2 {
+    color: #FFC0CB; /* Pink text */
+}
+
+body.dark-theme .original-message-container,
+body.dark-theme .transformed-message-container {
+    background-color: #302C40; /* Dark purple */
+    border: 1px solid #5D4777; /* Lighter purple */
+}
+
+body.dark-theme .original-message-container h3,
+body.dark-theme .transformed-message-container h3 {
+    color: #FFC0CB; /* Pink text */
+}
+
+body.dark-theme .message-preview {
+    color: #FFC0CB; /* Pink text */
+}
+
+body.dark-theme .tone-option {
+    border-color: #5D4777; /* Lighter purple */
+    background-color: #483d5e; /* Medium purple */
+}
+
+body.dark-theme .tone-option:hover {
+    background-color: #614B85; /* Deep purple */
+    border-color: #FF69B4; /* Hot pink */
+}
+
+body.dark-theme .tone-option.selected {
+    background-color: #614B85; /* Deep purple */
+    border-color: #FF69B4; /* Hot pink */
+}
+
+body.dark-theme .tone-details h4,
+body.dark-theme .tone-details .tagline {
+    color: #FFC0CB; /* Pink text */
+}
+
+body.dark-theme .tone-details .effect {
+    color: #DDA0DD; /* Plum color */
+}
+
+body.dark-theme .cancel-transform-btn,
+body.dark-theme #cancel-transform-btn,
+body.dark-theme #try-different-tone-btn,
+body.dark-theme #send-original-btn {
+    background-color: #614B85; /* Deep purple */
+    color: #FFC0CB; /* Pink text */
+}
+
+body.dark-theme .cancel-transform-btn:hover,
+body.dark-theme #cancel-transform-btn:hover,
+body.dark-theme #try-different-tone-btn:hover,
+body.dark-theme #send-original-btn:hover {
+    background-color: #5D4777; /* Lighter purple */
+}
+
+body.dark-theme .spinner {
+    border-color: #FFC0CB; /* Pink border */
+    border-top-color: #FF69B4; /* Hot pink top */
+}
+
+body.dark-theme .health-suggestion {
+    color: #FFC0CB; /* Pink text */
 }
 
 /* Theme Toggle Button */
@@ -675,10 +926,10 @@ body.dark-theme .toggle-btn.active {
 }
 
 .modal-content {
-    background-color: #f0f2f5;
+    background-color: #FFF0F5; /* Light pink background */
     margin: 2% auto;
     padding: 0;
-    border-radius: 12px;
+    border-radius: 15px; /* Rounded corners */
     width: 90%;
     max-width: 900px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -693,11 +944,12 @@ body.dark-theme .toggle-btn.active {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #128C7E;
-    border-radius: 12px 12px 0 0;
+    background-color: #FFC0CB; /* Pink header */
+    border-radius: 15px 15px 0 0;
     position: sticky;
     top: 0;
     z-index: 10;
+    color: #8E44AD; /* Purple text */
 }
 
 .modal-header h2 {
@@ -759,7 +1011,7 @@ body.dark-theme .toggle-btn.active {
 }
 
 .tone-option {
-    border: 2px solid #e1e1e1;
+    border: 2px solid #FFC0CB; /* Pink border */
     border-radius: 10px;
     padding: 15px;
     display: flex;
@@ -771,12 +1023,13 @@ body.dark-theme .toggle-btn.active {
 .tone-option:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    border-color: #128C7E;
+    border-color: #FF69B4; /* Hot pink border when hovered */
+    background-color: #FFE6F2; /* Very light pink hover */
 }
 
 .tone-option.selected {
-    border-color: #128C7E;
-    background-color: rgba(18, 140, 126, 0.05);
+    border-color: #FF69B4; /* Hot pink border when selected */
+    background-color: #FFB6C1; /* Pink selected background */
 }
 
 .tone-icon {
@@ -836,13 +1089,13 @@ body.dark-theme .toggle-btn.active {
 
 #transform-btn, 
 #send-transformed-btn {
-    background-color: #128C7E;
+    background-color: #FF69B4; /* Hot pink button */
     color: white;
 }
 
 #transform-btn:hover, 
 #send-transformed-btn:hover {
-    background-color: #0C6B5F;
+    background-color: #FF1493; /* Deeper pink on hover */
 }
 
 #transform-btn:disabled, 
@@ -911,279 +1164,50 @@ body.dark-theme .toggle-btn.active {
 
 /* Health suggestion styles */
 .health-suggestion-container {
-    background-color: rgba(255, 204, 0, 0.1);
-    border-left: 4px solid #ffcc00;
+    background-color: #FFF0F5; /* Light pink background */
+    border: 1px solid #FFC0CB; /* Pink border */
+    border-radius: 10px;
     padding: 15px;
-    margin: 15px 0;
+    margin: 20px 0;
     display: flex;
-    align-items: flex-start;
-    border-radius: 5px;
-    background-color: white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.health-suggestion-icon {
-    font-size: 24px;
-    margin-right: 15px;
+    align-items: center;
 }
 
 .health-suggestion {
+    color: #8E44AD; /* Purple text */
     flex: 1;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    color: #333;
+    margin-left: 10px;
+    font-size: 14px;
 }
 
-.dark-theme .health-suggestion-container {
-    background-color: rgba(255, 204, 0, 0.15);
-    color: #e9edef;
-}
-
-/* Dark theme adjustments for SugarTalk modal */
-.dark-theme .modal-content {
-    background-color: #111b21;
-}
-
-.dark-theme .original-message-container,
-.dark-theme .transformed-message-container,
-.dark-theme .tone-option,
-.dark-theme .tone-selection-actions,
-.dark-theme .transformed-actions,
-.dark-theme .loading-spinner {
-    background-color: #202c33;
-}
-
-.dark-theme .message-preview {
-    background-color: #111b21;
-    border-color: #222e35;
-    color: #e9edef;
-}
-
-.dark-theme .tone-option {
-    border-color: #222e35;
-}
-
-.dark-theme .tone-option:hover {
-    border-color: #128C7E;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-.dark-theme .tone-option.selected {
-    border-color: #128C7E;
-    background-color: rgba(18, 140, 126, 0.15);
-}
-
-.dark-theme .tone-details h4,
-.dark-theme .tone-details .tagline {
-    color: #128C7E;
-}
-
-.dark-theme .tone-details .effect {
-    color: #8696a0;
-}
-
-.dark-theme .cancel-transform-btn,
-.dark-theme .send-original-btn {
-    background-color: #2a3942;
-    color: #e9edef;
-    border-color: #222e35;
-}
-
-.dark-theme .cancel-transform-btn:hover,
-.dark-theme .send-original-btn:hover {
-    background-color: #3b4a54;
-}
-
-.dark-theme .spinner {
-    border-color: rgba(255, 255, 255, 0.1);
-    border-top-color: #128C7E;
-}
-
-.dark-theme .health-suggestion {
-    color: #e9edef;
-}
-
-/* Responsive adjustments for modal */
-@media (max-width: 900px) {
-    .tone-options {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-        margin: 3% auto;
-        max-height: 95vh;
-    }
-    
-    .modal-actions {
-        flex-direction: column;
-    }
-    
-    .modal-actions button {
-        width: 100%;
-        margin-bottom: 8px;
-    }
-    
-    .modal-body {
-        padding: 15px;
-    }
-    
-    .tone-option {
-        padding: 12px;
-    }
-}
-
-/* Hide transformed actions initially */
-.transformed-actions {
-    display: none;
-}
-
-/* Emoji Picker Styles */
+/* Emoji Picker */
 .emoji-picker {
-    position: absolute;
-    bottom: 70px;
-    right: 10px;
-    background-color: white;
-    width: 320px;
-    max-width: 90vw;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    z-index: 100;
-    display: none;
-    overflow: hidden;
+    background-color: #FFF0F5; /* Light pink background */
+    border: 1px solid #FFC0CB; /* Pink border */
+    border-radius: 10px;
 }
 
 .emoji-picker-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-    border-bottom: 1px solid #e1e1e1;
-    background-color: #f0f2f5;
-}
-
-.emoji-picker-header span {
-    font-weight: 600;
-    color: #128C7E;
-}
-
-#close-emoji-picker {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #667781;
-    font-size: 16px;
-}
-
-.emoji-categories {
-    display: flex;
-    overflow-x: auto;
-    padding: 8px;
-    border-bottom: 1px solid #e1e1e1;
-    background-color: #f0f2f5;
+    background-color: #FFC0CB; /* Pink header */
+    color: #8E44AD; /* Purple text */
 }
 
 .emoji-categories button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    margin: 0 2px;
-    border-radius: 50%;
-    color: #667781;
-    min-width: 32px;
-    height: 32px;
+    color: #8E44AD; /* Purple icons */
 }
 
-.emoji-categories button:hover {
-    background-color: #e1e1e1;
-}
-
+.emoji-categories button:hover,
 .emoji-categories button.active {
-    background-color: #e1e1e1;
-    color: #128C7E;
-}
-
-.emoji-search {
-    padding: 8px;
-    border-bottom: 1px solid #e1e1e1;
+    background-color: #FFD1DC; /* Light pink background */
+    color: #FF69B4; /* Hot pink */
 }
 
 .emoji-search input {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #e1e1e1;
-    border-radius: 20px;
-    font-size: 14px;
-    outline: none;
-}
-
-.emoji-container {
-    padding: 10px;
-    height: 200px;
-    overflow-y: auto;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 5px;
-}
-
-.emoji-item {
-    cursor: pointer;
-    font-size: 22px;
-    padding: 5px;
-    text-align: center;
-    border-radius: 5px;
-    user-select: none;
+    border: 1px solid #FFC0CB; /* Pink border */
 }
 
 .emoji-item:hover {
-    background-color: #f0f2f5;
-}
-
-/* Dark Theme Emoji Picker */
-.dark-theme .emoji-picker {
-    background-color: #202c33;
-    border: 1px solid #2a3942;
-}
-
-.dark-theme .emoji-picker-header,
-.dark-theme .emoji-categories,
-.dark-theme .emoji-search {
-    background-color: #111b21;
-    border-color: #2a3942;
-}
-
-.dark-theme .emoji-picker-header span {
-    color: #e9edef;
-}
-
-.dark-theme #close-emoji-picker {
-    color: #8696a0;
-}
-
-.dark-theme .emoji-categories button {
-    color: #8696a0;
-}
-
-.dark-theme .emoji-categories button:hover,
-.dark-theme .emoji-categories button.active {
-    background-color: #2a3942;
-}
-
-.dark-theme .emoji-categories button.active {
-    color: #128C7E;
-}
-
-.dark-theme .emoji-search input {
-    border-color: #2a3942;
-    background-color: #202c33;
-    color: #e9edef;
-}
-
-.dark-theme .emoji-item:hover {
-    background-color: #2a3942;
+    background-color: #FFD1DC; /* Light pink background */
 }
 
 /* Style for the emoji button */
@@ -1198,4 +1222,210 @@ body.dark-theme .toggle-btn.active {
 #emoji-btn:hover,
 #emoji-btn.active {
     color: #128C7E;
+}
+
+/* 3D Sugar Elements for background */
+.sugar-element {
+    position: absolute;
+    z-index: 0;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    opacity: 0.7;
+    transform-style: preserve-3d;
+}
+
+.lollipop {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #FF69B4, #FFB6C1, #FFC0CB, #FF69B4);
+    top: 15%;
+    right: 12%;
+    transform: rotate(-10deg);
+    animation: float 8s infinite, spin 25s infinite;
+    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.1), inset 3px 3px 10px rgba(255, 255, 255, 0.5);
+}
+
+.lollipop::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 100px;
+    background-color: white;
+    bottom: -95px;
+    left: 34px;
+    border-radius: 10px;
+    z-index: -1;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.candy {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #E6E6FA, #D8BFD8, #DDA0DD);
+    border-radius: 10px;
+    transform: rotate(45deg);
+    top: 70%;
+    left: 15%;
+    animation: float 7s infinite, spin 20s infinite;
+    box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.1), inset 2px 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+.gumdrop {
+    width: 60px;
+    height: 40px;
+    background: linear-gradient(to bottom, #FFDAB9, #FFB6C1);
+    border-radius: 50% 50% 10px 10px;
+    bottom: 10%;
+    right: 20%;
+    transform: perspective(500px) rotateX(30deg);
+    animation: float 9s infinite;
+    box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.1), inset 2px 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+.cotton-candy {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at 30% 30%, #FFB6C1, #FFC0CB, #FFD1DC);
+    border-radius: 50% 50% 40% 40%;
+    top: 5%;
+    left: 10%;
+    transform: rotate(15deg);
+    animation: float 10s infinite, grow 15s infinite;
+    box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.05), inset 3px 3px 15px rgba(255, 255, 255, 0.5);
+}
+
+.candy-cane {
+    width: 30px;
+    height: 120px;
+    background: linear-gradient(45deg, #FF69B4 25%, white 25%, white 50%, #FF69B4 50%, #FF69B4 75%, white 75%);
+    background-size: 30px 30px;
+    bottom: 5%;
+    left: 30%;
+    border-radius: 10px;
+    transform: rotate(30deg);
+    animation: float 8.5s infinite, grow-rotate 12s infinite;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sugar-cube {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    top: 40%;
+    right: 25%;
+    transform: perspective(500px) rotateX(30deg) rotateY(40deg);
+    animation: float 6s infinite, spin-3d 18s infinite;
+    box-shadow: 2px 2px 15px rgba(255, 192, 203, 0.3);
+}
+
+.donut {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at center, #FFB6C1, #FF69B4);
+    border-radius: 50%;
+    top: 30%;
+    left: 20%;
+    transform: perspective(500px) rotateX(60deg);
+    animation: float 9s infinite;
+    box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.1), inset 2px 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+.donut::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #FFF0F5;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ice-cream {
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-top: 70px solid #E6E6FA;
+    right: 8%;
+    bottom: 25%;
+    transform: perspective(500px) rotateX(-10deg);
+    animation: float 7.5s infinite;
+}
+
+.ice-cream::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 40px;
+    background: radial-gradient(circle at 30% 30%, #FFB6C1, #FF69B4);
+    border-radius: 50%;
+    top: -95px;
+    left: -25px;
+    box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.1), inset 2px 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Animations for sugar elements */
+@keyframes float {
+    0% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-3d {
+    0% { transform: perspective(500px) rotateX(30deg) rotateY(40deg); }
+    50% { transform: perspective(500px) rotateX(210deg) rotateY(220deg); }
+    100% { transform: perspective(500px) rotateX(390deg) rotateY(400deg); }
+}
+
+@keyframes grow {
+    0% { transform: scale(1) rotate(15deg); }
+    50% { transform: scale(1.1) rotate(10deg); }
+    100% { transform: scale(1) rotate(15deg); }
+}
+
+@keyframes grow-rotate {
+    0% { transform: scale(1) rotate(30deg); }
+    50% { transform: scale(1.1) rotate(40deg); }
+    100% { transform: scale(1) rotate(30deg); }
+}
+
+/* Add a subtle gradient background to enhance the 3D effect */
+#login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, #FFF0F5 0%, #FFE6F2 70%, #FFD1DC 100%);
+    z-index: -1;
+}
+
+/* Make sure form elements are above the 3D elements */
+.form-group, #login-container h1, #login-error {
+    position: relative;
+    z-index: 2;
+}
+
+/* Add a drop shadow to the login form elements for depth */
+#login-container .form-group input, 
+#login-container button {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#login-container .form-group input:focus, 
+#login-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 } 

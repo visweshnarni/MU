@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SugarTalk Chat</title>
+    <title>SugarTalk</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -10,7 +10,17 @@
     <div class="container">
         <!-- Login Screen -->
         <div id="login-container">
-            <h1>SugarTalk Chat</h1>
+            <!-- 3D Sugar Elements -->
+            <div class="sugar-element lollipop"></div>
+            <div class="sugar-element candy"></div>
+            <div class="sugar-element gumdrop"></div>
+            <div class="sugar-element cotton-candy"></div>
+            <div class="sugar-element candy-cane"></div>
+            <div class="sugar-element sugar-cube"></div>
+            <div class="sugar-element donut"></div>
+            <div class="sugar-element ice-cream"></div>
+            
+            <h1>SugarTalk</h1>
             <div class="form-group">
                 <input type="text" id="username" placeholder="Username" required>
             </div>
@@ -60,7 +70,7 @@
                 <div id="chat-box">
                     <!-- Messages will be populated dynamically -->
                     <div class="no-chat-selected">
-                        <p>Select a user to start chatting</p>
+                        <p>Select a user to start your sweet conversation</p>
                     </div>
                 </div>
                 <div class="input-container">
@@ -70,18 +80,20 @@
                             <button id="dismiss-suggestion"><i class="fas fa-times"></i></button>
                         </div>
                     </div>
-                    <input type="text" id="message-input" placeholder="Type a message..." disabled>
-                    <div class="button-group">
-                        <button id="emoji-btn" class="toggle-btn" title="Add Emoji" disabled>
-                            <i class="far fa-smile"></i>
-                        </button>
-                        <button id="gemini-toggle" class="toggle-btn" title="Enable/Disable Gemini AI" disabled>
-                            <i class="fas fa-robot"></i>
-                        </button>
-                        <button id="sugartalk-btn" class="toggle-btn" title="SugarTalk - Sweeten your message" disabled>
-                            <i class="fas fa-candy-cane"></i>
-                        </button>
-                        <button id="send-btn" disabled><i class="fas fa-paper-plane"></i></button>
+                    <div class="message-input-wrapper">
+                        <input type="text" id="message-input" placeholder="Type a message..." disabled>
+                        <div class="button-group">
+                            <button id="emoji-btn" class="toggle-btn" title="Add Emoji" disabled>
+                                <i class="far fa-smile"></i>
+                            </button>
+                            <button id="gemini-toggle" class="toggle-btn" title="Enable/Disable Gemini AI" disabled>
+                                <i class="fas fa-robot"></i>
+                            </button>
+                            <button id="sugartalk-btn" class="toggle-btn" title="SugarTalk - Sweeten your message" disabled>
+                                <i class="fas fa-candy-cane"></i>
+                            </button>
+                            <button id="send-btn" disabled><i class="fas fa-paper-plane"></i></button>
+                        </div>
                     </div>
                     
                     <!-- Emoji Picker Container -->
