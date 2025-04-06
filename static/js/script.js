@@ -36,6 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendOriginalBtn = document.getElementById('send-original-btn');
     const healthSuggestionContainer = document.getElementById('health-suggestion-container');
     const healthSuggestion = document.getElementById('health-suggestion');
+    // Emoji picker elements
+    const emojiBtn = document.getElementById('emoji-btn');
+    const emojiPicker = document.getElementById('emoji-picker');
+    const closeEmojiPickerBtn = document.getElementById('close-emoji-picker');
+    const emojiContainer = document.getElementById('emoji-container');
+    const emojiCategoryButtons = document.querySelectorAll('.emoji-categories button');
+    const emojiSearch = document.getElementById('emoji-search');
 
     // Variables
     let socket = null;
@@ -48,7 +55,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let messageAnalysisTimeout = null;
     let selectedTone = null;
     let currentTransformedMessage = '';
+    let currentEmojiCategory = 'smileys';
     const messageCache = {}; // Cache for messages by chat
+    
+    // Emoji data by category
+    const emojiData = {
+        smileys: ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😜', '😝', '🤑', '🤗', '🤔', '🤭', '🤫', '🤥', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕', '🤠', '🥳', '😎', '🤓', '🧐', '😕', '😟'],
+        people: ['👋', '🤚', '🖐', '✋', '🖖', '👌', '🤏', '✌️', '🤞', '🤟', '🤘', '🤙', '👈', '👉', '👆', '🖕', '👇', '☝️', '👍', '👎', '✊', '👊', '🤛', '🤜', '👏', '🙌', '👐', '🤲', '🤝', '🙏', '💪', '🦾', '🦵', '🦿', '🦶', '👂', '🦻', '👃', '🧠', '🦷', '🦴', '👀', '👁', '👅', '👄', '💋', '👶', '🧒', '👦', '👧', '🧑', '👱', '👨', '👩'],
+        animals: ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐸', '🐵', '🙈', '🙉', '🙊', '🐒', '🐔', '🐧', '🐦', '🐤', '🐣', '🐥', '🦆', '🦅', '🦉', '🦇', '🐺', '🐗', '🐴', '🦄', '🐝', '🐛', '🦋', '🐌', '🐞', '🐜', '🦟', '🦗', '🕷', '🕸', '🦂', '🐢', '🐍', '🦎', '🦖', '🦕', '🐙', '🦑'],
+        food: ['🍏', '🍎', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🍈', '🍒', '🍑', '🥭', '🍍', '🥥', '🥝', '🍅', '🍆', '🥑', '🥦', '🥬', '🥒', '🌶', '🌽', '🥕', '🧄', '🧅', '🥔', '🍠', '🥐', '🥯', '🍞', '🥖', '🥨', '🧀', '🥚', '🍳', '🧈', '🥞', '🧇', '🥓', '🥩', '🍗', '🍖', '🌭', '🍔', '🍟', '🍕', '🥪', '🥙'],
+        travel: ['🚗', '🚕', '🚙', '🚌', '🚎', '🏎', '🚓', '🚑', '🚒', '🚐', '🚚', '🚛', '🚜', '🦯', '🦽', '🦼', '🛴', '🚲', '🛵', '🏍', '🛺', '🚨', '🚔', '🚍', '🚘', '🚖', '🚡', '🚠', '🚟', '🚃', '🚋', '🚞', '🚝', '🚄', '🚅', '🚈', '🚂', '🚆', '🚇', '🚊', '🚉', '✈️', '🛫', '🛬', '🛩', '💺', '🛰', '🚀', '🛸'],
+        activities: ['⚽️', '🏀', '🏈', '⚾️', '🥎', '🎾', '🏐', '🏉', '🥏', '🎱', '🪀', '🏓', '🏸', '🏒', '🏑', '🥍', '🏏', '🥅', '⛳️', '🪁', '🏹', '🎣', '🤿', '🥊', '🥋', '🎽', '🛹', '🛷', '⛸', '🥌', '🎿', '⛷', '🏂', '🪂', '🏋️', '🤼', '🤸', '🤺', '⛹️', '🤾', '🏌️', '🏇', '🧘', '🏄', '🏊', '🤽', '🚣', '🧗', '🚵', '🚴'],
+        objects: ['⌚️', '📱', '📲', '💻', '⌨️', '🖥', '🖨', '🖱', '🖲', '🕹', '🗜', '💽', '💾', '💿', '📀', '📼', '📷', '📸', '📹', '🎥', '📽', '🎞', '📞', '☎️', '📟', '📠', '📺', '📻', '🎙', '🎚', '🎛', '🧭', '⏱', '⏲', '⏰', '🕰', '⌛️', '⏳', '📡', '🔋', '🔌', '💡', '🔦', '🕯', '🪔', '🧯', '🛢', '💸', '💵', '💴'],
+        symbols: ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎', '💔', '❣️', '💕', '💞', '💓', '💗', '💖', '💘', '💝', '💟', '☮️', '✝️', '☪️', '🕉', '☸️', '✡️', '🔯', '🕎', '☯️', '☦️', '🛐', '⛎', '♈️', '♉️', '♊️', '♋️', '♌️', '♍️', '♎️', '♏️', '♐️', '♑️', '♒️', '♓️', '🆔', '⚛️', '🉑', '☢️', '☣️', '📴', '📳'],
+        flags: ['🏁', '🚩', '🎌', '🏴', '🏳️', '🏳️‍🌈', '🏴‍☠️', '🇦🇫', '🇦🇽', '🇦🇱', '🇩🇿', '🇦🇸', '🇦🇩', '🇦🇴', '🇦🇮', '🇦🇶', '🇦🇬', '🇦🇷', '🇦🇲', '🇦🇼', '🇦🇺', '🇦🇹', '🇦🇿', '🇧🇸', '🇧🇭', '🇧🇩', '🇧🇧', '🇧🇾', '🇧🇪', '🇧🇿', '🇧🇯', '🇧🇲', '🇧🇹', '🇧🇴', '🇧🇦', '🇧🇼', '🇧🇷', '🇮🇴', '🇻🇬', '🇧🇳', '🇧🇬']
+    };
 
     // Check if user is already logged in (session stored in localStorage)
     const storedSessionId = localStorage.getItem('sessionId');
@@ -107,6 +128,31 @@ document.addEventListener('DOMContentLoaded', () => {
             closeSugartalkModal();
         }
     });
+    
+    // Emoji picker event listeners
+    emojiBtn.addEventListener('click', toggleEmojiPicker);
+    closeEmojiPickerBtn.addEventListener('click', closeEmojiPicker);
+    emojiSearch.addEventListener('input', searchEmojis);
+    
+    // Handle category selection
+    emojiCategoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.getAttribute('data-category');
+            setEmojiCategory(category);
+        });
+    });
+    
+    // Close emoji picker when clicking outside
+    document.addEventListener('click', (e) => {
+        if (emojiPicker.style.display === 'block' && 
+            !emojiPicker.contains(e.target) && 
+            e.target !== emojiBtn) {
+            closeEmojiPicker();
+        }
+    });
+    
+    // Initialize the emoji picker with the default category
+    initEmojiPicker();
     
     // Initialize theme based on localStorage or system preference
     function initializeTheme() {
@@ -554,7 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
         suggestionContent.innerHTML = suggestion;
         suggestionBox.style.display = 'flex';
     }
-    
+
     async function loadUsers() {
         try {
             const response = await fetch(`/api/users?session_id=${sessionId}`);
@@ -568,7 +614,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error loading users:', error);
         }
     }
-    
+
     function renderUsersList() {
         usersList.innerHTML = '';
         
@@ -602,7 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
             usersList.appendChild(userItem);
         });
     }
-    
+
     function filterUsers() {
         const searchTerm = searchUsersInput.value.toLowerCase();
         const userItems = document.querySelectorAll('.user-item');
@@ -617,19 +663,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     function updateUserStatus(username, isOnline) {
         const userIndex = users.findIndex(u => u.username === username);
         
         if (userIndex !== -1) {
             users[userIndex].online = isOnline;
-            
-            const userItem = document.querySelector(`.user-item[data-username="${username}"]`);
+        
+        const userItem = document.querySelector(`.user-item[data-username="${username}"]`);
             
             if (userItem) {
-                if (isOnline) {
+            if (isOnline) {
                     userItem.classList.add('online');
-                } else {
+            } else {
                     userItem.classList.remove('online');
                 }
             }
@@ -638,7 +684,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadUsers();
         }
     }
-    
+
     function selectUser(userToSelect) {
         // Update selected user
         selectedUser = userToSelect;
@@ -671,6 +717,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sendBtn.disabled = false;
         geminiToggle.disabled = false;
         sugartalkBtn.disabled = false;
+        emojiBtn.disabled = false;
         
         // Load messages
         loadMessages(userToSelect);
@@ -678,12 +725,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hide suggestion box
         suggestionBox.style.display = 'none';
     }
-    
+        
     function getUserStatusText(username) {
         const user = users.find(u => u.username === username);
         return user && user.online ? 'online' : 'offline';
     }
-    
+
     async function loadMessages(otherUser) {
         try {
             const response = await fetch(`/api/messages?session_id=${sessionId}&other_user=${otherUser}`);
@@ -701,7 +748,7 @@ document.addEventListener('DOMContentLoaded', () => {
             chatBox.innerHTML = '<div class="error-message">Error loading messages</div>';
         }
     }
-    
+
     function displayMessages(messages) {
         chatBox.innerHTML = '';
         
@@ -741,10 +788,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Scroll to bottom after all messages are loaded
         setTimeout(() => {
-            chatBox.scrollTop = chatBox.scrollHeight;
+        chatBox.scrollTop = chatBox.scrollHeight;
         }, 0);
     }
-    
+
     function sendMessage() {
         const messageText = messageInput.value.trim();
         
@@ -764,8 +811,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear input
         messageInput.value = '';
     }
-    
+
     function appendMessage(message) {
+        // Remove "No messages yet" message if it exists
+        const noMessagesElement = chatBox.querySelector('.no-messages');
+        if (noMessagesElement) {
+            chatBox.removeChild(noMessagesElement);
+        }
+        
         const isOwnMessage = message.sender === username;
         const messageElement = document.createElement('div');
         messageElement.className = `message ${isOwnMessage ? 'own-message' : 'other-message'}`;
@@ -788,13 +841,115 @@ document.addEventListener('DOMContentLoaded', () => {
         chatBox.appendChild(messageElement);
         chatBox.scrollTop = chatBox.scrollHeight;
     }
-    
+
     function showLoginError(message) {
         loginError.textContent = message;
     }
-    
+
     function formatTimestamp(timestamp) {
         const date = new Date(timestamp);
         return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    // Initialize emoji picker
+    function initEmojiPicker() {
+        setEmojiCategory('smileys');
+    }
+    
+    // Toggle emoji picker visibility
+    function toggleEmojiPicker() {
+        if (emojiPicker.style.display === 'block') {
+            closeEmojiPicker();
+        } else {
+            openEmojiPicker();
+        }
+    }
+    
+    // Open emoji picker
+    function openEmojiPicker() {
+        emojiPicker.style.display = 'block';
+        emojiBtn.classList.add('active');
+    }
+    
+    // Close emoji picker
+    function closeEmojiPicker() {
+        emojiPicker.style.display = 'none';
+        emojiBtn.classList.remove('active');
+    }
+    
+    // Set emoji category and display emojis
+    function setEmojiCategory(category) {
+        currentEmojiCategory = category;
+        
+        // Update category button active state
+        emojiCategoryButtons.forEach(button => {
+            if (button.getAttribute('data-category') === category) {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        });
+        
+        // Display emojis for the selected category
+        displayEmojis(emojiData[category]);
+    }
+    
+    // Display emojis in the container
+    function displayEmojis(emojis) {
+        emojiContainer.innerHTML = '';
+        
+        emojis.forEach(emoji => {
+            const emojiElement = document.createElement('div');
+            emojiElement.className = 'emoji-item';
+            emojiElement.textContent = emoji;
+            emojiElement.addEventListener('click', () => {
+                insertEmoji(emoji);
+            });
+            
+            emojiContainer.appendChild(emojiElement);
+        });
+    }
+    
+    // Insert emoji into message input
+    function insertEmoji(emoji) {
+        const startPos = messageInput.selectionStart;
+        const endPos = messageInput.selectionEnd;
+        const textBefore = messageInput.value.substring(0, startPos);
+        const textAfter = messageInput.value.substring(endPos);
+        
+        messageInput.value = textBefore + emoji + textAfter;
+        
+        // Set cursor position after the inserted emoji
+        messageInput.selectionStart = startPos + emoji.length;
+        messageInput.selectionEnd = startPos + emoji.length;
+        
+        // Focus the input after inserting
+        messageInput.focus();
+    }
+    
+    // Search emojis across all categories
+    function searchEmojis() {
+        const searchTerm = emojiSearch.value.toLowerCase();
+        
+        if (searchTerm === '') {
+            // If search is cleared, return to current category
+            setEmojiCategory(currentEmojiCategory);
+            return;
+        }
+        
+        // Search across all categories
+        const results = [];
+        for (const category in emojiData) {
+            const categoryEmojis = emojiData[category];
+            for (const emoji of categoryEmojis) {
+                // For simplicity, we're just checking if the emoji contains the search term
+                // In a real app, you might have descriptions for emojis to search through
+                if (emoji.includes(searchTerm)) {
+                    results.push(emoji);
+                }
+            }
+        }
+        
+        displayEmojis(results);
     }
 }); 

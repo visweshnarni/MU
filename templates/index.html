@@ -72,6 +72,9 @@
                     </div>
                     <input type="text" id="message-input" placeholder="Type a message..." disabled>
                     <div class="button-group">
+                        <button id="emoji-btn" class="toggle-btn" title="Add Emoji" disabled>
+                            <i class="far fa-smile"></i>
+                        </button>
                         <button id="gemini-toggle" class="toggle-btn" title="Enable/Disable Gemini AI" disabled>
                             <i class="fas fa-robot"></i>
                         </button>
@@ -79,6 +82,31 @@
                             <i class="fas fa-candy-cane"></i>
                         </button>
                         <button id="send-btn" disabled><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                    
+                    <!-- Emoji Picker Container -->
+                    <div id="emoji-picker" class="emoji-picker" style="display: none;">
+                        <div class="emoji-picker-header">
+                            <span>Emojis</span>
+                            <button id="close-emoji-picker"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="emoji-categories">
+                            <button data-category="smileys" class="active"><i class="far fa-smile"></i></button>
+                            <button data-category="people"><i class="far fa-user"></i></button>
+                            <button data-category="animals"><i class="fas fa-cat"></i></button>
+                            <button data-category="food"><i class="fas fa-pizza-slice"></i></button>
+                            <button data-category="travel"><i class="fas fa-car"></i></button>
+                            <button data-category="activities"><i class="fas fa-futbol"></i></button>
+                            <button data-category="objects"><i class="fas fa-lightbulb"></i></button>
+                            <button data-category="symbols"><i class="fas fa-heart"></i></button>
+                            <button data-category="flags"><i class="fas fa-flag"></i></button>
+                        </div>
+                        <div class="emoji-search">
+                            <input type="text" placeholder="Search emojis..." id="emoji-search">
+                        </div>
+                        <div class="emoji-container" id="emoji-container">
+                            <!-- Emojis will be populated here -->
+                        </div>
                     </div>
                 </div>
             </div>
