@@ -1,25 +1,44 @@
-# SugarTalk Application
+# SugarTalk - Sweeten Your Words, Sweeten Your World
 
-A WhatsApp-like chat application that allows users to communicate individually over a local network. Only authenticated users with credentials stored in a JSON file can access the chat.
+## What's the Use of the 'Sugar' Theme?
 
-## Features
+In a world where online conversations can quickly turn sour, SugarTalk adds a delightful touch of sweetness to every message. Inspired by the hackathon theme 'SUGAR', this application turns emotionally intense or harsh messages into thoughtful, calm, and kind conversations — all with the power of AI and some sugar-coated magic. Think of it as your digital relationship therapist, serving up empathy in every reply. 💌
 
-- User authentication from a JSON file
-- WhatsApp-like interface with sidebar user list
-- Individual one-to-one chats (not group chats)
-- Real-time messaging using Socket.IO
-- Network-wide access for all devices on the same network
-- Online/offline status indicators
-- **Dark Mode / Light Mode** theme options
-- Modern and responsive UI
-- Message history persistence
-- **Gemini AI-powered conversation monitoring** - Detects heated arguments and suggests de-escalation tactics
+## Problem Statement
 
-## Prerequisites
+Online conversations often become emotionally heated or misinterpreted due to lack of tone or empathy. Many people hesitate to send messages fearing they might come off too strong, aggressive, or offensive. There's a need for a tool that can detect emotional intensity in messages and help users convey their intent without hurting sentiments.
 
-- Python 3.7+
-- Flask and required libraries
-- Google Generative AI (Gemini) API key
+## 💡 Our Solution — SugarTalk
+
+Introducing SugarTalk, an AI-powered messaging assistant that acts as a peacekeeper in your DMs:
+
+- Detects emotionally intense or harsh messages in real time
+- Suggests softer, sweeter alternatives with sugar-themed tone styles
+- Empowers users to send, edit, or rephrase the message based on AI suggestions
+- Provides full emotional control over tone, vibe, and messaging style
+
+With SugarTalk, you're not just chatting — you're building healthier digital relationships. 🍯
+
+## Key Features
+
+### 7 Sugar-Inspired Tone Styles
+Users can input a message, select a tone, and get a sugarified version. Each tone has a unique emotional flavor:
+### 🛠 Custom Emotional Rewriting
+SugarTalk doesn't just suggest sugar-coated rewrites — it empowers the user. Once the AI gives a softened version, users can fine-tune it to match their preferred vibe.
+
+### Example in Action
+
+Input:  
+"Shut your mouth, you never listen!"
+
+Tone Selected: 🍓 Berry Nice  
+Output:  
+"Heeey, let's keep it chill please, Maybe we could take turns talking?"
+
+Tone Selected: 💎 Bittersweet Truth  
+Output:  
+"I feel like I'm not being heard. Can we try having a more balanced conversation?"
+
 
 ## Installation
 
@@ -33,23 +52,7 @@ A WhatsApp-like chat application that allows users to communicate individually o
 ## Configuration
 
 1. User accounts are stored in `users.json`. The default file contains sample accounts:
-   ```json
-   [
-     {
-       "username": "user1",
-       "password": "password1"
-     },
-     {
-       "username": "user2",
-       "password": "password2"
-     },
-     {
-       "username": "admin",
-       "password": "admin123"
-     }
-   ]
-   ```
-
+ 
 2. You can modify this file to add/remove users as needed.
 
 3. The Gemini API key is already included in the app.py file. If needed, you can replace it with your own key.
@@ -72,9 +75,6 @@ A WhatsApp-like chat application that allows users to communicate individually o
 1. Login with a username and password from the `users.json` file.
 2. The sidebar will display all available users on the network.
 3. Click on a user to start a private chat with them.
-4. Green dot indicates users who are online.
-5. New unread messages are indicated with a green dot next to the user's name.
-6. Messages are stored in memory during the server's runtime.
 
 ### Dark/Light Mode Theme
 
@@ -88,14 +88,10 @@ A WhatsApp-like chat application that allows users to communicate individually o
 3. If detected, a suggestion box will appear with de-escalation suggestions.
 4. Click the X on the suggestion box to dismiss it.
 
-## Security Considerations
-
-- This is a basic implementation. In a production environment, you should:
-  - Use HTTPS
-  - Hash passwords instead of storing them in plain text
-  - Implement proper session management
-  - Consider database storage for messages and user data
-  - Secure your API keys
+#Images of our project
+![WhatsApp Image 2025-04-06 at 10 13 40_68852e1a](https://github.com/user-attachments/assets/21a2103f-a189-43ac-8509-41e5a41f6e5e)
+![WhatsApp Image 2025-04-06 at 10 21 28_c916ca4c](https://github.com/user-attachments/assets/6d039d67-6250-4002-9405-eb33580b3574)
+![WhatsApp Image 2025-04-06 at 10 25 02_c20b7879](https://github.com/user-attachments/assets/efda69ce-9dad-4dff-ac85-567864234417)
 
 ## License
 
